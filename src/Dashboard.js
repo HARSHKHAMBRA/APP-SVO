@@ -7,26 +7,28 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       const token = localStorage.getItem('jwtToken');
-      if (token) {
-        try {
-          const response = await fetch('http://localhost:5000/api/user-details', {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-
-          if (response.ok) {
-            const userData = await response.json();
-            setUser(userData);
-          } else {
-            const errorData = await response.json();
-            setError(errorData.error || 'Failed to fetch user details');
-          }
-        } catch (err) {
-          setError(err.message || 'Failed to fetch user details');
-        }
-      } else {
+      if (!token) {
         setError('No token found');
+        return;
+      }
+
+      try {
+        const response = await fetch('https://svo-v2.netlify.app:5000/api/user-details', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          setError(errorData.error || 'Failed to fetch user details');
+          return;
+        }
+
+        const userData = await response.json();
+        setUser(userData);
+      } catch (err) {
+        setError(err.message || 'Failed to fetch user details');
       }
     };
 
