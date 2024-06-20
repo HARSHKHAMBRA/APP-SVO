@@ -12,14 +12,21 @@ admin.initializeApp({
 });
 
 const app = express();
-app.use(cors());
+
+// Configure CORS to allow only the specified origin
+const corsOptions = {
+  origin: 'https://svo-v2.netlify.app',
+  optionsSuccessStatus: 200 // For legacy browser support
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Middleware to verify Firebase ID token
 const verifyToken = async (req, res, next) => {
   const idToken = req.headers.authorization?.split('Bearer ')[1];
   if (!idToken) {
-    return res.status(401).send('Unauthorized');
+    return res.status(401).send('Unauthorized: No token provided');
   }
 
   try {
@@ -27,7 +34,8 @@ const verifyToken = async (req, res, next) => {
     req.user = decodedToken;
     next();
   } catch (error) {
-    return res.status(401).send('Unauthorized');
+    console.error('Token verification failed:', error);
+    return res.status(401).send('Unauthorized: Invalid token');
   }
 };
 
@@ -41,6 +49,7 @@ app.get('/api/user-details', verifyToken, async (req, res) => {
       displayName: user.displayName,
     });
   } catch (error) {
+    console.error('Failed to fetch user details:', error);
     res.status(500).json({ error: 'Failed to fetch user details' });
   }
 });
