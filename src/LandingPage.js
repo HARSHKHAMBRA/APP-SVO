@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ const LandingPage = () => {
                 <p className="card-text">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non urna non velit malesuada tincidunt.
                 </p>
-                <a href="#" className="btn btn-primary">Learn More</a>
+                <button className="btn btn-primary">Learn More</button>
               </div>
             </div>
           </div>
@@ -77,7 +78,7 @@ const LandingPage = () => {
                 <p className="card-text">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non urna non velit malesuada tincidunt.
                 </p>
-                <a href="#" className="btn btn-primary">Learn More</a>
+                <button className="btn btn-primary">Learn More</button>
               </div>
             </div>
           </div>
@@ -90,7 +91,7 @@ const LandingPage = () => {
                 <p className="card-text">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non urna non velit malesuada tincidunt.
                 </p>
-                <a href="#" className="btn btn-primary">Learn More</a>
+                <button className="btn btn-primary">Learn More</button>
               </div>
             </div>
           </div>
