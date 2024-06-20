@@ -47,9 +47,9 @@ const LandingPage = () => {
       <div className="container mt-5">
         <div className="row">
           <div className="col-lg-12 text-center">
-            <h1>Welcome to Our Tech Landing Page</h1>
+            <h1>Welcome to Our Svo Landing Page</h1>
             <p className="lead">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non urna vitae nulla aliquam luctus. Duis euismod, risus at facilisis luctus, nunc lorem fringilla erat, ac euismod orci sapien sit amet purus.
+            Please Firstly Register Our Account And Connect With US. we collect a large no. of selected and best users
             </p>
             <button onClick={navigateToRegister} className="btn btn-secondary me-2">Register</button>
             <button onClick={navigateToLogin} className="btn btn-secondary">Login</button>
