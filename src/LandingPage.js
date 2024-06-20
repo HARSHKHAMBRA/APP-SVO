@@ -55,47 +55,6 @@ const LandingPage = () => {
             <button onClick={navigateToLogin} className="btn btn-secondary">Login</button>
           </div>
         </div>
-        <div className="row mt-5">
-          {/* Card 1 */}
-          <div className="col-lg-4 col-md-6 mb-4">
-            <div className="card">
-              <img src="https://via.placeholder.com/350x250" className="card-img-top" alt="Card 1" />
-              <div className="card-body">
-                <h5 className="card-title">Card Title 1</h5>
-                <p className="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non urna non velit malesuada tincidunt.
-                </p>
-                <button className="btn btn-primary">Learn More</button>
-              </div>
-            </div>
-          </div>
-          {/* Card 2 */}
-          <div className="col-lg-4 col-md-6 mb-4">
-            <div className="card">
-              <img src="https://via.placeholder.com/350x250" className="card-img-top" alt="Card 2" />
-              <div className="card-body">
-                <h5 className="card-title">Card Title 2</h5>
-                <p className="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non urna non velit malesuada tincidunt.
-                </p>
-                <button className="btn btn-primary">Learn More</button>
-              </div>
-            </div>
-          </div>
-          {/* Card 3 */}
-          <div className="col-lg-4 col-md-6 mb-4">
-            <div className="card">
-              <img src="https://via.placeholder.com/350x250" className="card-img-top" alt="Card 3" />
-              <div className="card-body">
-                <h5 className="card-title">Card Title 3</h5>
-                <p className="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non urna non velit malesuada tincidunt.
-                </p>
-                <button className="btn btn-primary">Learn More</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
