@@ -1,6 +1,6 @@
 // netlify/functions/user-details.js
 const admin = require('firebase-admin');
-const serviceAccount = require('../../key/serviceAccountKey.json'); // Adjust the path as needed
+const serviceAccount = require('../../src/key/serviceaccountkey.json'); // Adjust the path as needed
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
