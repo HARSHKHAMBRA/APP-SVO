@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from './utils/services/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import Swal from 'sweetalert2';
-import logo from './logo.png'; // Import the logo image
+import logo from './assets/img/Logo.png'; // Import the logo image
 import './Login.css'; // Import the CSS file
 
 const Login = () => {
