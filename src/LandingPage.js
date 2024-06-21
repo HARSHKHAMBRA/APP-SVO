@@ -1,30 +1,40 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './LandingPage.css';
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+
+  const navigateToRegister = () => {
+    navigate('/register');
+  };
+
+  const navigateToLogin = () => {
+    navigate('/login');
+  };
+
   return (
     <div>
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">AI & Metaverse</Link>
+          <a className="navbar-brand" href="#">AI & Metaverse</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/register">
+                <a className="nav-link" href="#" onClick={navigateToRegister}>
                   <i className="fas fa-user-plus me-1"></i> Register
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/login">
+                <a className="nav-link" href="#" onClick={navigateToLogin}>
                   <i className="fas fa-sign-in-alt me-1"></i> Login
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -54,10 +64,10 @@ const LandingPage = () => {
               <h5 className="text-uppercase">Links</h5>
               <ul className="list-unstyled mb-0">
                 <li>
-                  <button type="button" className="btn btn-link text-dark">Terms and Conditions</button>
+                  <a href="#" className="text-dark">Terms and Conditions</a>
                 </li>
                 <li>
-                  <button type="button" className="btn btn-link text-dark">Privacy Policy</button>
+                  <a href="#" className="text-dark">Privacy Policy</a>
                 </li>
               </ul>
             </div>
