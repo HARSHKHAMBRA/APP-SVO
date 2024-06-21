@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserPlus, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import './LandingPage.css';
 
 const LandingPage = () => {
-  const navigateToExternalLink = (url) => {
-    window.open(url, '_blank'); // Opens link in a new tab
-  };
-
   return (
     <div>
       {/* Navbar */}
@@ -21,14 +18,14 @@ const LandingPage = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <button className="nav-link btn btn-link" onClick={navigateToExternalLink('/register')}>
-                  <i className="fas fa-user-plus me-1"></i> Register
-                </button>
+                <Link to="/register" className="nav-link">
+                  <FontAwesomeIcon icon={faUserPlus} className="me-1" /> Register
+                </Link>
               </li>
               <li className="nav-item">
-                <button className="nav-link btn btn-link" onClick={navigateToExternalLink('/login')}>
-                  <i className="fas fa-sign-in-alt me-1"></i> Login
-                </button>
+                <Link to="/login" className="nav-link">
+                  <FontAwesomeIcon icon={faSignInAlt} className="me-1" /> Login
+                </Link>
               </li>
             </ul>
           </div>
@@ -70,23 +67,23 @@ const LandingPage = () => {
               <h5 className="text-uppercase">Follow Us</h5>
               <ul className="list-unstyled d-flex justify-content-around">
                 <li>
-                  <a href="#" className="text-dark">
-                    <i className="fab fa-facebook-f"></i>
+                  <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="text-dark">
+                    <FontAwesomeIcon icon={['fab', 'facebook-f']} />
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-dark">
-                    <i className="fab fa-twitter"></i>
+                  <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="text-dark">
+                    <FontAwesomeIcon icon={['fab', 'twitter']} />
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-dark">
-                    <i className="fab fa-instagram"></i>
+                  <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="text-dark">
+                    <FontAwesomeIcon icon={['fab', 'instagram']} />
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-dark">
-                    <i className="fab fa-linkedin-in"></i>
+                  <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-dark">
+                    <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
                   </a>
                 </li>
               </ul>
@@ -95,7 +92,7 @@ const LandingPage = () => {
         </div>
 
         <div className="text-center p-3 bg-dark text-white">
-          © 2024 AI & Metaverse. All Rights Reserved.
+          © 2024 SVO. All Rights Reserved.
         </div>
       </footer>
     </div>
