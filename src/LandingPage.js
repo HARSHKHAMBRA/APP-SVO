@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import './LandingPage.css';
 
 const LandingPage = () => {
@@ -68,22 +69,22 @@ const LandingPage = () => {
               <ul className="list-unstyled d-flex justify-content-around">
                 <li>
                   <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="text-dark">
-                    <FontAwesomeIcon icon={['fab', 'facebook-f']} />
+                    <FontAwesomeIcon icon={faFacebookF} />
                   </a>
                 </li>
                 <li>
                   <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="text-dark">
-                    <FontAwesomeIcon icon={['fab', 'twitter']} />
+                    <FontAwesomeIcon icon={faTwitter} />
                   </a>
                 </li>
                 <li>
                   <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="text-dark">
-                    <FontAwesomeIcon icon={['fab', 'instagram']} />
+                    <FontAwesomeIcon icon={faInstagram} />
                   </a>
                 </li>
                 <li>
                   <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-dark">
-                    <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
+                    <FontAwesomeIcon icon={faLinkedinIn} />
                   </a>
                 </li>
               </ul>
