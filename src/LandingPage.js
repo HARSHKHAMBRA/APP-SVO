@@ -54,10 +54,10 @@ const LandingPage = () => {
               <h5 className="text-uppercase">Links</h5>
               <ul className="list-unstyled mb-0">
                 <li>
-                  <Link to="/terms" className="text-dark">Terms and Conditions</Link>
+                  <button type="button" className="btn btn-link text-dark">Terms and Conditions</button>
                 </li>
                 <li>
-                  <Link to="/privacy" className="text-dark">Privacy Policy</Link>
+                  <button type="button" className="btn btn-link text-dark">Privacy Policy</button>
                 </li>
               </ul>
             </div>
