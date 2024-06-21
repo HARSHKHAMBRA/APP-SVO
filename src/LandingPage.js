@@ -1,18 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './LandingPage.css';
 
 const LandingPage = () => {
-  const navigate = useNavigate();
-
-  const navigateToRegister = () => {
-    navigate('/register');
-  };
-
-  const navigateToLogin = () => {
-    navigate('/login');
+  const navigateToExternalLink = (url) => {
+    window.open(url, '_blank'); // Opens link in a new tab
   };
 
   return (
@@ -20,21 +14,21 @@ const LandingPage = () => {
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">AI & Metaverse</a>
+          <Link className="navbar-brand" to="/">AI & Metaverse</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+            <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link" href="#" onClick={navigateToRegister}>
+                <button className="nav-link btn btn-link" onClick={navigateToExternalLink('/register')}>
                   <i className="fas fa-user-plus me-1"></i> Register
-                </a>
+                </button>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#" onClick={navigateToLogin}>
+                <button className="nav-link btn btn-link" onClick={navigateToExternalLink('/login')}>
                   <i className="fas fa-sign-in-alt me-1"></i> Login
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -64,10 +58,10 @@ const LandingPage = () => {
               <h5 className="text-uppercase">Links</h5>
               <ul className="list-unstyled mb-0">
                 <li>
-                  <a href="#" className="text-dark">Terms and Conditions</a>
+                  <Link to="/terms" className="text-dark">Terms and Conditions</Link>
                 </li>
                 <li>
-                  <a href="#" className="text-dark">Privacy Policy</a>
+                  <Link to="/privacy" className="text-dark">Privacy Policy</Link>
                 </li>
               </ul>
             </div>
