@@ -1,110 +1,207 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, ListGroup } from 'react-bootstrap';
+import React, { useEffect, useRef } from 'react';
 
 const Market = () => {
-  const [selectedSymbol, setSelectedSymbol] = useState('NASDAQ:AAPL'); // Default symbol
+  const advancedChartContainer = useRef(null);
+  const marketOverviewContainer = useRef(null);
 
   useEffect(() => {
-    loadTradingViewWidget(selectedSymbol); // Load initial TradingView widget
-  }, [selectedSymbol]);
+    // Load TradingView Advanced Chart widget
+    const script1 = document.createElement("script");
+    script1.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script1.async = true;
+    script1.innerHTML = `
+      {
+        "width": "100%",
+        "height": "600",
+        "symbol": "NASDAQ:AAPL",
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "withdateranges": true,
+        "hide_side_toolbar": false,
+        "allow_symbol_change": true,
+        "details": true,
+        "hotlist": true,
+        "calendar": false,
+        "show_popup_button": true,
+        "popup_width": "1000",
+        "popup_height": "650",
+        "support_host": "https://www.tradingview.com"
+      }
+    `;
+    
+    if (advancedChartContainer.current) {
+      advancedChartContainer.current.appendChild(script1);
+    }
 
-  const loadTradingViewWidget = (symbol) => {
-    const script = document.createElement('script');
-    script.src = 'https://s3.tradingview.com/tv.js';
-    script.async = true;
-    script.onload = () => {
-      const widget = new window.TradingView.widget({
-        symbol: symbol,
-        interval: 'D',
-        timezone: 'Etc/UTC',
-        theme: 'light',
-        style: '1',
-        locale: 'en',
-        toolbar_bg: '#f1f3f6',
-        enable_publishing: false,
-        allow_symbol_change: true,
-        container_id: 'tradingview-widget-container',
-      });
-
-      widget.init();
-    };
-
-    document.body.appendChild(script);
+    // Load TradingView Market Overview widget
+    const script2 = document.createElement("script");
+    script2.type = "text/javascript";
+    script2.src = "https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js";
+    script2.async = true;
+    script2.innerHTML = `
+      {
+        "colorTheme": "light",
+        "dateRange": "12M",
+        "showChart": true,
+        "locale": "en",
+        "largeChartUrl": "",
+        "isTransparent": false,
+        "showSymbolLogo": true,
+        "showFloatingTooltip": true,
+        "width": "100%",
+        "height": "600",
+        "plotLineColorGrowing": "rgba(0, 255, 0, 1)",
+        "plotLineColorFalling": "rgba(255, 0, 0, 1)",
+        "gridLineColor": "rgba(240, 243, 250, 0)",
+        "scaleFontColor": "rgba(19, 23, 34, 1)",
+        "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+        "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+        "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+        "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+        "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+        "tabs": [
+          {
+            "title": "Indices",
+            "symbols": [
+              {
+                "s": "FOREXCOM:SPXUSD",
+                "d": "S&P 500 Index"
+              },
+              {
+                "s": "FOREXCOM:NSXUSD",
+                "d": "US 100 Cash CFD"
+              },
+              {
+                "s": "FOREXCOM:DJI",
+                "d": "Dow Jones Industrial Average Index"
+              },
+              {
+                "s": "INDEX:NKY",
+                "d": "Nikkei 225"
+              },
+              {
+                "s": "INDEX:DEU40",
+                "d": "DAX Index"
+              },
+              {
+                "s": "FOREXCOM:UKXGBP",
+                "d": "FTSE 100 Index"
+              }
+            ],
+            "originalTitle": "Indices"
+          },
+          {
+            "title": "Futures",
+            "symbols": [
+              {
+                "s": "CME_MINI:ES1!",
+                "d": "S&P 500"
+              },
+              {
+                "s": "CME:6E1!",
+                "d": "Euro"
+              },
+              {
+                "s": "COMEX:GC1!",
+                "d": "Gold"
+              },
+              {
+                "s": "NYMEX:CL1!",
+                "d": "WTI Crude Oil"
+              },
+              {
+                "s": "NYMEX:NG1!",
+                "d": "Gas"
+              },
+              {
+                "s": "CBOT:ZC1!",
+                "d": "Corn"
+              }
+            ],
+            "originalTitle": "Futures"
+          },
+          {
+            "title": "Bonds",
+            "symbols": [
+              {
+                "s": "CBOT:ZB1!",
+                "d": "T-Bond"
+              },
+              {
+                "s": "CBOT:UB1!",
+                "d": "Ultra T-Bond"
+              },
+              {
+                "s": "EUREX:FGBL1!",
+                "d": "Euro Bund"
+              },
+              {
+                "s": "EUREX:FBTP1!",
+                "d": "Euro BTP"
+              },
+              {
+                "s": "EUREX:FGBM1!",
+                "d": "Euro BOBL"
+              }
+            ],
+            "originalTitle": "Bonds"
+          },
+          {
+            "title": "Forex",
+            "symbols": [
+              {
+                "s": "FX:EURUSD",
+                "d": "EUR to USD"
+              },
+              {
+                "s": "FX:GBPUSD",
+                "d": "GBP to USD"
+              },
+              {
+                "s": "FX:USDJPY",
+                "d": "USD to JPY"
+              },
+              {
+                "s": "FX:USDCHF",
+                "d": "USD to CHF"
+              },
+              {
+                "s": "FX:AUDUSD",
+                "d": "AUD to USD"
+              },
+              {
+                "s": "FX:USDCAD",
+                "d": "USD to CAD"
+              }
+            ],
+            "originalTitle": "Forex"
+          }
+        ]
+      }
+    `;
+    
+    if (marketOverviewContainer.current) {
+      marketOverviewContainer.current.appendChild(script2);
+    }
 
     return () => {
-      document.body.removeChild(script);
+      if (advancedChartContainer.current) {
+        advancedChartContainer.current.removeChild(script1);
+      }
+      if (marketOverviewContainer.current) {
+        marketOverviewContainer.current.removeChild(script2);
+      }
     };
-  };
-
-  // Example list of markets (replace with actual data)
-  const markets = [
-    { id: 1, name: 'NASDAQ', symbol: 'NASDAQ:AAPL', description: 'Apple Inc.' },
-    { id: 2, name: 'NYSE', symbol: 'NYSE:MSFT', description: 'Microsoft Corporation' },
-    { id: 3, name: 'Tokyo Stock Exchange', symbol: 'TSE:7203', description: 'Toyota Motor Corporation' },
-    { id: 4, name: 'London Stock Exchange', symbol: 'LSE:BP', description: 'BP plc' },
-    { id: 5, name: 'Hong Kong Stock Exchange', symbol: 'HKEX:0700', description: 'Tencent Holdings Limited' },
-    { id: 6, name: 'Frankfurt Stock Exchange', symbol: 'FRA:SAP', description: 'SAP SE' },
-    { id: 7, name: 'Shanghai Stock Exchange', symbol: 'SSE:600519', description: 'Kweichow Moutai Co., Ltd.' },
-    { id: 8, name: 'Bombay Stock Exchange', symbol: 'BSE:500325', description: 'Reliance Industries Limited' },
-  ];
-
-  const handleMarketClick = (symbol) => {
-    setSelectedSymbol(symbol); // Update selected symbol on click
-  };
+  }, []);
 
   return (
-    <Container fluid className="market-container">
-      <h2 className="text-center mb-4">SVO MARKET</h2>
-      <Row>
-        <Col xs={12} md={8} className="mb-4">
-          <div id="tradingview-widget-container" className="tradingview-container"></div>
-        </Col>
-        <Col xs={12} md={4}>
-          <div className="markets-list">
-            <h3 className="mb-3">Markets</h3>
-            <ListGroup className="list-group">
-              {markets.map((market) => (
-                <ListGroup.Item
-                  key={market.id}
-                  action
-                  onClick={() => handleMarketClick(market.symbol)}
-                  active={selectedSymbol === market.symbol}
-                >
-                  <strong>{market.name}</strong> ({market.symbol}) - {market.description}
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
-          </div>
-        </Col>
-      </Row>
-
-      {/* Optional: Add custom CSS for responsive design */}
-      <style jsx>{`
-        .market-container {
-          padding: 15px; /* Adjust padding for all sides */
-        }
-
-        .tradingview-container {
-          width: 100%;
-          height: 300px; /* Adjust height for mobile */
-        }
-
-        .markets-list {
-          margin-top: 20px;
-        }
-
-        .list-group {
-          max-height: 300px; /* Limit height to enable scrolling */
-          overflow-y: auto; /* Enable vertical scrolling */
-        }
-
-        @media (min-width: 768px) {
-          .tradingview-container {
-            height: 500px; /* Larger height for larger screens */
-          }
-        }
-      `}</style>
-    </Container>
+    <div>
+      <div className="tradingview-widget-container" ref={advancedChartContainer}></div>
+      <div className="tradingview-widget-container" ref={marketOverviewContainer}></div>
+    </div>
   );
 };
 
