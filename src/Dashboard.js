@@ -12,6 +12,7 @@ import balanceIcon from './assets/img/tether-usdt-logo.png';
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [balance, setBalance] = useState(null);
+  const [profile, setProfile] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -42,6 +43,20 @@ const Dashboard = () => {
               setBalance(balanceData.balance);
             } else {
               setError('Failed to fetch balance');
+            }
+
+            // Fetch profile
+            const profileResponse = await fetch('/.netlify/functions/user-profile', {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
+
+            if (profileResponse.ok) {
+              const profileData = await profileResponse.json();
+              setProfile(profileData.profile);
+            } else {
+              setError('Failed to fetch profile');
             }
 
           } else {
@@ -116,6 +131,14 @@ const Dashboard = () => {
             </div>
           ) : (
             <p>Loading balance...</p>
+          )}
+          {profile && (
+            <div className="profile-info">
+              <p>Profile:</p>
+              <p>Name: {profile.name}</p>
+              <p>Address: {profile.address}</p>
+              {/* Add more profile fields as needed */}
+            </div>
           )}
         </div>
       </div>
