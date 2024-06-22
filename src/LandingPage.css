@@ -99,3 +99,10 @@
     }
   }
   
+  .explore-rewards-title {
+    color: #333; /* Example text color */
+    font-size: 2rem; /* Example font size */
+    text-align: center; /* Example text alignment */
+    /* Add more styles as needed */
+  }
+  

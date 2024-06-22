@@ -46,7 +46,7 @@ const LandingPage = () => {
         </div>
       </div>
       <section className="video-section py-5">
-          <h2 className="mb-4">Experience Our Vision</h2>
+      <h2 className="explore-rewards-title mb-4">Experience Our Vision</h2>
           <video autoPlay loop className="w-100">
             <source src={videoSource} type="video/mp4" />
             Your browser does not support the video tag.
@@ -54,7 +54,7 @@ const LandingPage = () => {
       </section>
       {/* Vouchers/Rewards Section */}
       <section className="vouchers-section bg-light text-left py-5">
-        <h2 className="mb-4">Explore Our Rewards</h2>
+      <h2 className="explore-rewards-title mb-4">Explore Our Rewards</h2>
         <div className="row">
           <div className="col-md-3 mb-4">
             <div className="card text-center">
@@ -97,7 +97,7 @@ const LandingPage = () => {
 
       {/* Cards Section */}
       <section className="cards-section bg-light text-center py-5">
-        <h2 className="mb-4">Explore Different Phases</h2>
+      <h2 className="explore-rewards-title mb-4">Explore Different Phases</h2>
         <div className="row gx-4">
           {/* Card 1: Add Money */}
           <div className="col-md-3 mb-4">
@@ -144,7 +144,7 @@ const LandingPage = () => {
 
       {/* Vertical Cards Section */}
       <section className="vertical-cards-section bg-light py-5">
-        <h2 className="mb-4 text-center">Our Journey</h2>
+      <h2 className="explore-rewards-title mb-4">Our Journey</h2>
         <div className="row align-items-center">
           <div className="col-md-6 text-end">
             <div className="card mb-4 mx-auto" style={{ width: '18rem' }}>
