@@ -20,7 +20,8 @@ exports.handler = async (event, context) => {
 
     // Fetch additional user details from Firestore
     const db = admin.firestore();
-    const userDoc = await db.collection('users').doc(user.uid).get();
+    const userRef = db.collection('users').doc(user.uid);
+    const userDoc = await userRef.get();
 
     if (!userDoc.exists) {
       return {

@@ -106,8 +106,9 @@ const Dashboard = () => {
       <div className="main-box">
         <h1>Dashboard</h1>
         <div className="user-info">
-          <p>Welcome, {user.username}!</p>
+          <p>Welcome, {user.displayName}!</p>
           <p>Your email: {user.email}</p>
+          <p>Username: {user.username}</p> {/* Display username */}
           {balance !== null ? (
             <div className="balance-container">
               <img src={balanceIcon} alt="Balance Icon" width="30" height="30" />
