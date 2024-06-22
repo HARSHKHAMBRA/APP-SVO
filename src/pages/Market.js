@@ -44,7 +44,7 @@ const Market = () => {
   ];
 
   return (
-    <Container className="market-container">
+    <Container fluid className="market-container">
       <h2 className="text-center mb-4">SVO MARKET</h2>
       <Row>
         <Col xs={12} md={8} className="mb-4">
@@ -63,6 +63,33 @@ const Market = () => {
           </div>
         </Col>
       </Row>
+
+      {/* Optional: Add custom CSS for responsive design */}
+      <style jsx>{`
+        .market-container {
+          padding: 0 15px; /* Adjust padding for mobile */
+        }
+
+        .tradingview-container {
+          width: 100%;
+          height: 400px; /* Adjust height for mobile */
+        }
+
+        .markets-list {
+          margin-top: 20px;
+        }
+
+        .list-group {
+          max-height: 300px; /* Limit height to enable scrolling */
+          overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        @media (min-width: 768px) {
+          .tradingview-container {
+            height: 600px; /* Larger height for larger screens */
+          }
+        }
+      `}</style>
     </Container>
   );
 };
