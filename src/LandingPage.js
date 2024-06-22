@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import './LandingPage.css';
+import GlobeDemo from './components/magicui/globe/GlobeDemo'; // Adjust import path
 
 const LandingPage = () => {
   return (
@@ -40,6 +41,9 @@ const LandingPage = () => {
           <p className="lead">Join us to explore the infinite possibilities of AI and the Metaverse.</p>
         </div>
       </div>
+
+      {/* Globe Demo */}
+      <GlobeDemo />
 
       {/* Footer Section */}
       <footer className="bg-light text-center text-lg-start mt-5">
