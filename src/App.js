@@ -8,6 +8,8 @@ import useAuth from './hooks/useAuth'; // Replace with your actual authenticatio
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import NotFound from './pages/NotFound'; // Import the NotFound component
+import Market from './pages/Market'; // Import the NotFound component
+
 
 const App = () => {
   const { user, loading } = useAuth(); // Get user and loading state from useAuth hook
@@ -24,6 +26,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/Market" element={<Market />} />
         {/* Protected route */}
         <Route
           path="/dashboard"
