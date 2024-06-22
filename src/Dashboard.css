@@ -1,0 +1,196 @@
+/* Dashboard.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .left-container,
+  .right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+  }
+  
+  .left-box,
+  .right-box {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .main-box {
+    background: linear-gradient(to bottom right, #ff4e50, #f9d423);
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px 0;
+    color: white; /* Text color for better readability */
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  .user-info p {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to bottom right, #ff4e50, #f9d423);
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: linear-gradient(to bottom right, #ff4e50, #c16800);
+  }
+  
+  /* General class for gradient background */
+  .gradient-background {
+    background: linear-gradient(to bottom right, #ff4e50, #f9d423);
+    color: white; /* Text color for better readability */
+  }
+  
+  /* Mobile version: two rows for left and right content */
+  @media (max-width: 599px) {
+    .dashboard-container {
+      flex-direction: column;
+    }
+  
+    .left-container,
+    .right-container {
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%;
+    }
+  
+    .left-box,
+    .right-box {
+      flex: 1;
+      margin: 15px;
+    }
+  
+    .main-box {
+      margin: 25px 0;
+      width: calc(100% - 40px);
+    }
+  }
+  
+  /* Desktop version: single row for left and right content */
+  @media (min-width: 600px) {
+    .dashboard-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .left-container,
+    .right-container {
+      max-width: 200px;
+    }
+  
+    .main-box {
+      margin: 0 20px;
+    }
+  }
+  
+  /* BottomNavBar.css */
+  
+  .scroll-contain {
+    max-height: 620px; /* Set a maximum height to enable scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  /* Hide scrollbar for webkit browsers */
+  .scroll-contain::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Dashboard.css */
+  
+  .usdt {
+  color: green;
+  font-weight: bold;
+  }
+  
+  .balance-container {
+  display: flex;
+  align-items: center;
+  }
+  
+  .balance-container img {
+  margin-right: 10px; /* Adjust as needed */
+  }
+  
+  /* New gradient class usage example */
+  /* General class for gradient background */
+  .gradient-background {
+    background: linear-gradient(to bottom right, #ff4e50, #f9d423);
+    color: white; /* Text color for better readability */
+    padding: 20px; /* Common padding if needed */
+    text-align: center; /* Common text alignment if needed */
+    border-radius: 5px; /* Common border radius if needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Common box shadow if needed */
+  }
+  /* Add this to your CSS file (Dashboard.css) */
+  
+  /* Icon colors */
+  .icon-market {
+    color: #ff4500; /* OrangeRed */
+  }
+  
+  .icon-my-games {
+    color: #32cd32; /* LimeGreen */
+  }
+  
+  .icon-wallet {
+    color: #1e90ff; /* DodgerBlue */
+  }
+  
+  .icon-vouchers {
+    color: #ff69b4; /* HotPink */
+  }
+  
+  .icon-add-money {
+    color: #ffd700; /* Gold */
+  }
+  
+  .icon-help-support {
+    color: #8a2be2; /* BlueViolet */
+  }
+  
+  .icon-transactions {
+    color: #ffa500; /* Orange */
+  }
+  
+  .icon-assets {
+    color: #6a5acd; /* SlateBlue */
+  }
+  .logout-icon {
+    color: red;
+  }
+  .Scrolling-container {
+    height: calc(60vh - 10px); /* Adjust the height as needed */
+    overflow-y: auto;
+    width: 100%;
+  }
+  

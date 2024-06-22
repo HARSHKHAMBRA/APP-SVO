@@ -1,0 +1,85 @@
+/* BottomNavBar.css */
+
+.bottom-nav-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to right, #f44336, #673ab7); /* Gradient using vibrant colors */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    padding: 12px 0; /* Increased padding for better touch targets */
+    z-index: 1000;
+  }
+  
+  .nav-item {
+    flex: 1;
+    text-align: center;
+    color: #fff;
+    padding: 8px 0;
+    font-size: 14px;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .nav-item p {
+    margin: 3px 0 0;
+    font-size: 12px;
+  }
+  
+  .nav-item.home {
+    flex: 1;
+    background: #2196f3; /* Solid color for the home button */
+    color: #fff;
+    border-radius: 50%;
+    padding: 12px;
+    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+  
+  .nav-item.home p {
+    color: #fff;
+  }
+  
+  .nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background on hover */
+  }
+  
+  .nav-item.home:hover {
+    background: #1976d2; /* Darker color on hover for the home button */
+  }
+  
+  .nav-item svg {
+    font-size: 20px;
+    color: #fff;
+  }
+  
+  /* Mobile specific styles */
+  @media (max-width: 599px) {
+    .bottom-nav-bar {
+      padding: 8px 0;
+    }
+  
+    .nav-item {
+      padding: 8px 0;
+      font-size: 12px;
+    }
+  
+    .nav-item.home {
+      padding: 10px;
+      font-size: 12px;
+    }
+  
+    .nav-item svg {
+      font-size: 24px;
+    }
+  
+    .nav-item p {
+      margin: 2px 0 0;
+      font-size: 10px;
+    }
+  }
+  
