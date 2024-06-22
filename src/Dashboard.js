@@ -16,46 +16,48 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUserDetails = async () => {
+    const fetchUserBalance = async () => {
       const token = localStorage.getItem('jwtToken');
       if (token) {
         try {
-          const response = await fetch('/.netlify/functions/user-details', {
+          // Fetch balance
+          const userBalanceResponse = await fetch('/.netlify/functions/user-balance', {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
 
-          if (response.ok) {
-            const userData = await response.json();
-            setUser(userData);
+          if (userBalanceResponse.ok) {
+            const balanceData = await userBalanceResponse.json();
+            setBalance(balanceData.balance);
 
-            // Fetch balance
-            const balanceResponse = await fetch('/.netlify/functions/user-balance', {
+            // Once balance is fetched, fetch user details
+            const userDetailsResponse = await fetch('/.netlify/functions/user-details', {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
             });
 
-            if (balanceResponse.ok) {
-              const balanceData = await balanceResponse.json();
-              setBalance(balanceData.balance);
+            if (userDetailsResponse.ok) {
+              const userData = await userDetailsResponse.json();
+              setUser(userData);
             } else {
-              setError('Failed to fetch balance');
+              const errorData = await userDetailsResponse.json();
+              setError(errorData.error || 'Failed to fetch user details');
             }
           } else {
-            const errorData = await response.json();
-            setError(errorData.error || 'Failed to fetch user details');
+            const errorData = await userBalanceResponse.json();
+            setError(errorData.error || 'Failed to fetch balance');
           }
         } catch (err) {
-          setError(err.message || 'Failed to fetch user details');
+          setError(err.message || 'Failed to fetch user balance');
         }
       } else {
         setError('No token found');
       }
     };
 
-    fetchUserDetails();
+    fetchUserBalance();
   }, []);
 
   const handleNavigation = (page) => {
@@ -97,7 +99,7 @@ const Dashboard = () => {
     return <div>Error: {error}</div>;
   }
 
-  if (!user) {
+  if (!user || balance === null) {
     return <div>Loading...</div>;
   }
 
@@ -107,14 +109,10 @@ const Dashboard = () => {
         <h1>Dashboard</h1>
         <div className="user-info">
           <p>Welcome, {user.username}!</p>
-          {balance !== null ? (
-            <div className="balance-container">
-              <img src={balanceIcon} alt="Balance Icon" width="30" height="30" />
-              <p>{balance} USDT</p>
-            </div>
-          ) : (
-            <p>Loading balance...</p>
-          )}
+          <div className="balance-container">
+            <img src={balanceIcon} alt="Balance Icon" width="30" height="30" />
+            <p>{balance} USDT</p>
+          </div>
         </div>
       </div>
       <div className="Scrolling-container">
