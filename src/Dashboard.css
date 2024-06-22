@@ -189,7 +189,7 @@ body {
     color: red;
   }
   .Scrolling-container {
-    height: calc(60vh - 10px); /* Adjust the height as needed */
+    height: calc(57vh - 10px); /* Adjust the height as needed */
     overflow-y: auto;
     width: 100%;
   }
