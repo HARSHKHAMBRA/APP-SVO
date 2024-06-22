@@ -1,4 +1,3 @@
-// netlify/functions/user-details.js
 const admin = require('firebase-admin');
 const serviceAccount = require('../../src/key/serviceaccountkey.json'); // Adjust the path as needed
 
@@ -19,18 +18,29 @@ exports.handler = async (event, context) => {
     const decodedToken = await admin.auth().verifyIdToken(idToken);
     const user = await admin.auth().getUser(decodedToken.uid);
 
-    // Extract the user's display name or username
-    const displayName = user.displayName || 'No display name available';
+    // Fetch additional user details from Firestore
+    const db = admin.firestore();
+    const userDoc = await db.collection('users').doc(user.uid).get();
+
+    if (!userDoc.exists) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({ error: 'User data not found' }),
+      };
+    }
+
+    const userData = userDoc.data();
 
     return {
       statusCode: 200,
       body: JSON.stringify({
         email: user.email,
         uid: user.uid,
-        displayName: displayName,
+        username: userData.username, // Assuming 'username' is stored in the user document
       }),
     };
   } catch (error) {
+    console.error('Error fetching user details:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to fetch user details' }),
