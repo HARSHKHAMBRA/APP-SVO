@@ -63,7 +63,7 @@ const Dashboard = () => {
   const handleNavigation = (page) => {
     switch (page) {
       case 'MARKET':
-        navigate('/market');
+        navigate('/Market');
         break;
       case 'MY GAMES':
         navigate('/Game', { state: { token: localStorage.getItem('jwtToken') } });
