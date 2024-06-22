@@ -1,16 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, ListGroup } from 'react-bootstrap';
 
 const Market = () => {
+  const [selectedSymbol, setSelectedSymbol] = useState('NASDAQ:AAPL'); // Default symbol
+
   useEffect(() => {
-    // Ensure the TradingView library is loaded
+    loadTradingViewWidget(selectedSymbol); // Load initial TradingView widget
+  }, [selectedSymbol]);
+
+  const loadTradingViewWidget = (symbol) => {
     const script = document.createElement('script');
     script.src = 'https://s3.tradingview.com/tv.js';
     script.async = true;
     script.onload = () => {
       const widget = new window.TradingView.widget({
-        symbol: 'NASDAQ:AAPL', // Example symbol (you can change this)
-        interval: 'D', // Example interval (D = daily)
+        symbol: symbol,
+        interval: 'D',
         timezone: 'Etc/UTC',
         theme: 'light',
         style: '1',
@@ -29,7 +34,7 @@ const Market = () => {
     return () => {
       document.body.removeChild(script);
     };
-  }, []);
+  };
 
   // Example list of markets (replace with actual data)
   const markets = [
@@ -43,6 +48,10 @@ const Market = () => {
     { id: 8, name: 'Bombay Stock Exchange', symbol: 'BSE:500325', description: 'Reliance Industries Limited' },
   ];
 
+  const handleMarketClick = (symbol) => {
+    setSelectedSymbol(symbol); // Update selected symbol on click
+  };
+
   return (
     <Container fluid className="market-container">
       <h2 className="text-center mb-4">SVO MARKET</h2>
@@ -55,7 +64,12 @@ const Market = () => {
             <h3 className="mb-3">Markets</h3>
             <ListGroup className="list-group">
               {markets.map((market) => (
-                <ListGroup.Item key={market.id}>
+                <ListGroup.Item
+                  key={market.id}
+                  action
+                  onClick={() => handleMarketClick(market.symbol)}
+                  active={selectedSymbol === market.symbol}
+                >
                   <strong>{market.name}</strong> ({market.symbol}) - {market.description}
                 </ListGroup.Item>
               ))}
@@ -67,12 +81,12 @@ const Market = () => {
       {/* Optional: Add custom CSS for responsive design */}
       <style jsx>{`
         .market-container {
-          padding: 0 15px; /* Adjust padding for mobile */
+          padding: 15px; /* Adjust padding for all sides */
         }
 
         .tradingview-container {
           width: 100%;
-          height: 400px; /* Adjust height for mobile */
+          height: 300px; /* Adjust height for mobile */
         }
 
         .markets-list {
@@ -86,8 +100,7 @@ const Market = () => {
 
         @media (min-width: 768px) {
           .tradingview-container {
-          width: 245px;
-            height: 600px; /* Larger height for larger screens */
+            height: 500px; /* Larger height for larger screens */
           }
         }
       `}</style>
