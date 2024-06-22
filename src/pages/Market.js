@@ -86,6 +86,7 @@ const Market = () => {
 
         @media (min-width: 768px) {
           .tradingview-container {
+          width: 245px;
             height: 600px; /* Larger height for larger screens */
           }
         }
