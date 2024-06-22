@@ -122,7 +122,7 @@ const Dashboard = () => {
       <div className="main-box">
         <h1>Dashboard</h1>
         <div className="user-info">
-          <p>Welcome, {user.username}!</p>
+          <p>Welcome, {profile ? profile.name : user.username}!</p>
           <p>Your email: {user.email}</p>
           {balance !== null ? (
             <div className="balance-container">
@@ -134,7 +134,7 @@ const Dashboard = () => {
           )}
           {profile && (
             <div className="profile-info">
-              <p>Profile:</p>
+              <p>Profile Information:</p>
               <p>Name: {profile.name}</p>
               <p>Address: {profile.address}</p>
               {/* Add more profile fields as needed */}
@@ -186,7 +186,7 @@ const Dashboard = () => {
         <div className="right-container">
           <div className="logout-icon right-box" onClick={() => handleNavigation('LOGOUT')}>
             <FontAwesomeIcon icon={faSignOutAlt} size="2x" className="icon-logout" />
-            <p>logout</p>
+            <p>LOGOUT</p>
           </div>
         </div>
       </div>
