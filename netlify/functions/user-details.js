@@ -18,12 +18,16 @@ exports.handler = async (event, context) => {
   try {
     const decodedToken = await admin.auth().verifyIdToken(idToken);
     const user = await admin.auth().getUser(decodedToken.uid);
+
+    // Extract the user's display name or username
+    const displayName = user.displayName || 'No display name available';
+
     return {
       statusCode: 200,
       body: JSON.stringify({
         email: user.email,
         uid: user.uid,
-        displayName: user.displayName,
+        displayName: displayName,
       }),
     };
   } catch (error) {
