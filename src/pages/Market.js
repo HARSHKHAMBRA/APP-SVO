@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Container, Row, Col, ListGroup } from 'react-bootstrap';
 
 const Market = () => {
   useEffect(() => {
@@ -30,11 +31,39 @@ const Market = () => {
     };
   }, []);
 
+  // Example list of markets (replace with actual data)
+  const markets = [
+    { id: 1, name: 'NASDAQ', symbol: 'NASDAQ:AAPL', description: 'Apple Inc.' },
+    { id: 2, name: 'NYSE', symbol: 'NYSE:MSFT', description: 'Microsoft Corporation' },
+    { id: 3, name: 'Tokyo Stock Exchange', symbol: 'TSE:7203', description: 'Toyota Motor Corporation' },
+    { id: 4, name: 'London Stock Exchange', symbol: 'LSE:BP', description: 'BP plc' },
+    { id: 5, name: 'Hong Kong Stock Exchange', symbol: 'HKEX:0700', description: 'Tencent Holdings Limited' },
+    { id: 6, name: 'Frankfurt Stock Exchange', symbol: 'FRA:SAP', description: 'SAP SE' },
+    { id: 7, name: 'Shanghai Stock Exchange', symbol: 'SSE:600519', description: 'Kweichow Moutai Co., Ltd.' },
+    { id: 8, name: 'Bombay Stock Exchange', symbol: 'BSE:500325', description: 'Reliance Industries Limited' },
+  ];
+
   return (
-    <div>
-      <h2>TradingView Chart Example</h2>
-      <div id="tradingview-widget-container" style={{ width: '100%', height: '600px' }}></div>
-    </div>
+    <Container className="market-container">
+      <h2 className="text-center mb-4">SVO MARKET</h2>
+      <Row>
+        <Col xs={12} md={8} className="mb-4">
+          <div id="tradingview-widget-container" className="tradingview-container"></div>
+        </Col>
+        <Col xs={12} md={4}>
+          <div className="markets-list">
+            <h3 className="mb-3">Markets</h3>
+            <ListGroup className="list-group">
+              {markets.map((market) => (
+                <ListGroup.Item key={market.id}>
+                  <strong>{market.name}</strong> ({market.symbol}) - {market.description}
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
