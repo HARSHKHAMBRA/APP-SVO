@@ -5,6 +5,9 @@ const Market = () => {
   const marketOverviewContainer = useRef(null);
 
   useEffect(() => {
+    const advancedChartContainerRef = advancedChartContainer.current;
+    const marketOverviewContainerRef = marketOverviewContainer.current;
+
     // Load TradingView Advanced Chart widget
     const script1 = document.createElement("script");
     script1.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
@@ -32,8 +35,8 @@ const Market = () => {
       }
     `;
     
-    if (advancedChartContainer.current) {
-      advancedChartContainer.current.appendChild(script1);
+    if (advancedChartContainerRef) {
+      advancedChartContainerRef.appendChild(script1);
     }
 
     // Load TradingView Market Overview widget
@@ -183,16 +186,16 @@ const Market = () => {
       }
     `;
     
-    if (marketOverviewContainer.current) {
-      marketOverviewContainer.current.appendChild(script2);
+    if (marketOverviewContainerRef) {
+      marketOverviewContainerRef.appendChild(script2);
     }
 
     return () => {
-      if (advancedChartContainer.current) {
-        advancedChartContainer.current.removeChild(script1);
+      if (advancedChartContainerRef) {
+        advancedChartContainerRef.removeChild(script1);
       }
-      if (marketOverviewContainer.current) {
-        marketOverviewContainer.current.removeChild(script2);
+      if (marketOverviewContainerRef) {
+        marketOverviewContainerRef.removeChild(script2);
       }
     };
   }, []);
