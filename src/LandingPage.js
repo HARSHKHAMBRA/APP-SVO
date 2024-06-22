@@ -144,7 +144,7 @@ const LandingPage = () => {
 
       {/* Vertical Cards Section */}
       <section className="vertical-cards-section bg-light py-5">
-        <h2 className="mb-4 text-center">Define Your Journey</h2>
+        <h2 className="mb-4 text-center">Our Journey</h2>
         <div className="row align-items-center">
           <div className="col-md-6 text-end">
             <div className="card mb-4 mx-auto" style={{ width: '18rem' }}>
