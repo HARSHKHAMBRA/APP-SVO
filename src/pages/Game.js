@@ -5,14 +5,14 @@ import BottomNavBar from '../BottomNavBar';
 import balanceIcon from '../assets/img/tether-usdt-logo.png';
 
 // Example game images (replace with actual image URLs)
-import game1Image from '../assets/img/wing.png';
-import game2Image from '../assets/img/wing.png';
-import game3Image from '../assets/img/wing.png';
-import game4Image from '../assets/img/wing.png';
-import game5Image from '../assets/img/wing.png';
-import game6Image from '../assets/img/wing.png';
-import game7Image from '../assets/img/wing.png';
-import game8Image from '../assets/img/wing.png';
+import game1Image from '../assets/img/wingo.png';
+import game2Image from '../assets/img/wingo.png';
+import game3Image from '../assets/img/wingo.png';
+import game4Image from '../assets/img/wingo.png';
+import game5Image from '../assets/img/wingo.png';
+import game6Image from '../assets/img/wingo.png';
+import game7Image from '../assets/img/wingo.png';
+import game8Image from '../assets/img/wingo.png';
 
 const Game = () => {
   const [user, setUser] = useState(null);
