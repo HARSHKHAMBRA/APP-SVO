@@ -10,7 +10,8 @@ import TermsOfService from './pages/TermsOfService';
 import NotFound from './pages/NotFound'; // Import the NotFound component
 import Market from './pages/Market';
 import Game from './pages/Game';
-import Wingo from './pages/cdsc/wingo'; // Adjust the import path if necessary
+import Wingo from './pages/cdsc/Wingo'; // Ensure correct path to Wingo component
+
 const App = () => {
   const { user, loading } = useAuth(); // Get user and loading state from useAuth hook
 
