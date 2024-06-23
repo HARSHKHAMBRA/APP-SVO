@@ -5,13 +5,12 @@ import BottomNavBar from '../BottomNavBar';
 
 const Game = () => {
   const [user, setUser] = useState(null);
-  const [session, setSession] = useState(null);
   const [error, setError] = useState(null);
   const emailRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchSessionData = async () => {
+    const fetchUserData = async () => {
       const token = localStorage.getItem('jwtToken');
       if (token) {
         try {
@@ -25,33 +24,19 @@ const Game = () => {
             const userData = await userResponse.json();
             setUser(userData);
             emailRef.current = userData.email;
-
-            const sessionResponse = await fetch('/.netlify/functions/start-session', {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            });
-
-            if (sessionResponse.ok) {
-              const sessionData = await sessionResponse.json();
-              setSession(sessionData);
-            } else {
-              const errorData = await sessionResponse.json();
-              setError(errorData.error || 'Failed to start session');
-            }
           } else {
             const errorData = await userResponse.json();
             setError(errorData.error || 'Failed to fetch user details');
           }
         } catch (err) {
-          setError(err.message || 'Failed to fetch session data');
+          setError(err.message || 'Failed to fetch user data');
         }
       } else {
         setError('No token found');
       }
     };
 
-    fetchSessionData();
+    fetchUserData();
   }, []);
 
   const handleLogout = () => {
@@ -63,7 +48,7 @@ const Game = () => {
     return <div>Error: {error}</div>;
   }
 
-  if (!user || !session) {
+  if (!user) {
     return <div>Loading...</div>;
   }
 
@@ -74,7 +59,6 @@ const Game = () => {
         <button onClick={handleLogout}>Logout</button>
       </div>
       <div className="game-area">
-        <p>Your session ID: {session.sessionId}</p>
         <p>Your email: {emailRef.current}</p>
         {/* Add your game UI components here */}
         <div className="game-board">
