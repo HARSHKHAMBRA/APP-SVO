@@ -10,6 +10,7 @@ import TermsOfService from './pages/TermsOfService';
 import NotFound from './pages/NotFound'; // Import the NotFound component
 import Market from './pages/Market'; // Import the NotFound component
 import Game from './pages/Game';
+import Game1 from './pages/cdsc87/Game1';
 
 const App = () => {
   const { user, loading } = useAuth(); // Get user and loading state from useAuth hook
@@ -34,6 +35,7 @@ const App = () => {
         />
         {/* Fallback route for 404 */}
         <Route path="/Game" element={<Game />} />
+        <Route path="/Game1" element={<Game1 />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
