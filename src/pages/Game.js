@@ -67,7 +67,7 @@ const Game = () => {
 
   // Example games list with images and routes
   const games = [
-    { id: 1, name: 'Game 1', image: game1Image, route: '/cdsc87/game1' },
+    { id: 1, name: 'Game 1', image: game1Image, route: '/cdsc/Wingo' },
     { id: 2, name: 'Game 2', image: game2Image, route: '/cdsc87/game2' },
     { id: 3, name: 'Game 3', image: game3Image, route: '/cdsc87/game3' },
     { id: 4, name: 'Game 4', image: game4Image, route: '/cdsc87/game4' },

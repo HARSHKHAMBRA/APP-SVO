@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Game1 = () => {
+const Wingo = () => {
   const [username, setUsername] = useState('');
   const [userBalance, setUserBalance] = useState(0);
   const navigate = useNavigate();
@@ -24,16 +24,16 @@ const Game1 = () => {
   };
 
   return (
-    <div className="game1-container">
-      <h2>Welcome to Game 1, {username}!</h2>
+    <div className="wingo-container">
+      <h2>Welcome to Wingo, {username}!</h2>
       <p>Your balance: {userBalance} USDT</p>
-      <div className="game1-content">
-        {/* Add your game 1 content and UI components here */}
-        <p>This is Game 1 content. Add your game description and UI elements.</p>
+      <div className="wingo-content">
+        {/* Add your Wingo content and UI components here */}
+        <p>This is Wingo content. Add your game description and UI elements.</p>
       </div>
       <button onClick={handleBack}>Back to Game</button>
     </div>
   );
 };
 
-export default Game1;
+export default Wingo;

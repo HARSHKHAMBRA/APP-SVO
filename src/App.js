@@ -8,9 +8,9 @@ import useAuth from './hooks/useAuth'; // Replace with your actual authenticatio
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import NotFound from './pages/NotFound'; // Import the NotFound component
-import Market from './pages/Market'; // Import the NotFound component
+import Market from './pages/Market';
 import Game from './pages/Game';
-import Game1 from './pages/cdsc87/Game1';
+import Wingo from './pages/cdsc/Wingo'; // Ensure correct path to Wingo component
 
 const App = () => {
   const { user, loading } = useAuth(); // Get user and loading state from useAuth hook
@@ -27,15 +27,15 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
-        <Route path="/Market" element={<Market />} />
+        <Route path="/market" element={<Market />} /> {/* Ensure correct path */}
         {/* Protected route */}
         <Route
           path="/dashboard"
-          element={user ? <Dashboard /> : <Navigate to="/login" />} // Redirect to login if not authenticated
+          element={user ? <Dashboard /> : <Navigate to="/login" replace />} // Use replace to prevent history clutter
         />
+        <Route path="/game" element={<Game />} /> {/* Ensure correct path */}
+        <Route path="/wingo" element={<Wingo />} /> {/* Ensure correct path */}
         {/* Fallback route for 404 */}
-        <Route path="/Game" element={<Game />} />
-        <Route path="/Game1" element={<Game1 />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
