@@ -9,7 +9,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import NotFound from './pages/NotFound'; // Import the NotFound component
 import Market from './pages/Market'; // Import the NotFound component
-
+import Game from './pages/Game';
 
 const App = () => {
   const { user, loading } = useAuth(); // Get user and loading state from useAuth hook
@@ -33,6 +33,7 @@ const App = () => {
           element={user ? <Dashboard /> : <Navigate to="/login" />} // Redirect to login if not authenticated
         />
         {/* Fallback route for 404 */}
+        <Route path="/Game" element={<Game />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
