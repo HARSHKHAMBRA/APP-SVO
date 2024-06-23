@@ -16,7 +16,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUserBalance = async () => {
+    const fetchUserData = async () => {
       const token = localStorage.getItem('jwtToken');
       if (token) {
         try {
@@ -57,7 +57,7 @@ const Dashboard = () => {
       }
     };
 
-    fetchUserBalance();
+    fetchUserData();
   }, []);
 
   const handleNavigation = (page) => {

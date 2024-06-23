@@ -27,38 +27,27 @@ exports.handler = async (event, context) => {
 
     // Check if the user document exists in Firestore
     if (!userDoc.exists) {
-      // Create a new user document with a balance of 0 and generate username
-      const username = generateUsername(user.email); // Generate username based on email
-      await userRef.set({
-        email: user.email,
-        balance: 0,
-        username: username,
-      });
       return {
-        statusCode: 200,
-        body: JSON.stringify({
-          balance: 0,
-          username: username,
-        }),
+        statusCode: 404,
+        body: JSON.stringify({ error: 'User not found' }),
       };
     }
 
-    // Retrieve existing user data including balance and username
     const userData = userDoc.data();
-    // Ensure username exists, if not generate one based on email
-    if (!userData.username) {
-      const username = generateUsername(user.email); // Generate username based on email
-      await userRef.update({
-        username: username,
-      });
-      userData.username = username;
+
+    // Validate if user has a balance field
+    if (!userData.hasOwnProperty('balance')) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({ error: 'User balance not found' }),
+      };
     }
 
+    // Return the user's balance
     return {
       statusCode: 200,
       body: JSON.stringify({
-        balance: userData.balance || 0,
-        username: userData.username,
+        balance: userData.balance,
       }),
     };
   } catch (error) {
@@ -69,11 +58,3 @@ exports.handler = async (event, context) => {
     };
   }
 };
-
-// Helper function to generate a username based on email
-function generateUsername(email) {
-  // Implement your own logic to generate a username
-  // Here's a basic example that extracts the portion before '@'
-  const username = email.split('@')[0];
-  return username;
-}
