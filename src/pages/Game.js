@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Game.css';
 import BottomNavBar from '../BottomNavBar';
 import balanceIcon from '../assets/img/tether-usdt-logo.png';
@@ -65,16 +65,16 @@ const Game = () => {
     return <div>Loading...</div>;
   }
 
-  // Example games list with images
+  // Example games list with images and routes
   const games = [
-    { id: 1, name: 'Game 1', image: game1Image },
-    { id: 2, name: 'Game 2', image: game2Image },
-    { id: 3, name: 'Game 3', image: game3Image },
-    { id: 4, name: 'Game 4', image: game4Image },
-    { id: 5, name: 'Game 5', image: game5Image },
-    { id: 6, name: 'Game 6', image: game6Image },
-    { id: 7, name: 'Game 7', image: game7Image },
-    { id: 8, name: 'Game 8', image: game8Image },
+    { id: 1, name: 'Game 1', image: game1Image, route: '/cdsc87/game1' },
+    { id: 2, name: 'Game 2', image: game2Image, route: '/cdsc87/game2' },
+    { id: 3, name: 'Game 3', image: game3Image, route: '/cdsc87/game3' },
+    { id: 4, name: 'Game 4', image: game4Image, route: '/cdsc87/game4' },
+    { id: 5, name: 'Game 5', image: game5Image, route: '/cdsc87/game5' },
+    { id: 6, name: 'Game 6', image: game6Image, route: '/cdsc87/game6' },
+    { id: 7, name: 'Game 7', image: game7Image, route: '/cdsc87/game7' },
+    { id: 8, name: 'Game 8', image: game8Image, route: '/cdsc87/game8' },
   ];
 
   return (
@@ -94,20 +94,20 @@ const Game = () => {
         <div className="game-list">
           <div className="games-left">
             {games.slice(0, 4).map(game => (
-              <div key={game.id} className="game-item">
+              <Link key={game.id} to={game.route} className="game-item">
                 <img src={game.image} alt={game.name} />
                 <p>{game.name}</p>
                 {/* Add any other game info or UI components here */}
-              </div>
+              </Link>
             ))}
           </div>
           <div className="games-right">
             {games.slice(4, 8).map(game => (
-              <div key={game.id} className="game-item">
+              <Link key={game.id} to={game.route} className="game-item">
                 <img src={game.image} alt={game.name} />
                 <p>{game.name}</p>
                 {/* Add any other game info or UI components here */}
-              </div>
+              </Link>
             ))}
           </div>
         </div>
