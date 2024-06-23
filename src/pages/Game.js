@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Game.css';
 import BottomNavBar from '../BottomNavBar';
+import balanceIcon from '../assets/img/tether-usdt-logo.png';
 
 const Game = () => {
   const [user, setUser] = useState(null);
@@ -61,13 +62,12 @@ const Game = () => {
         <button onClick={handleLogout}>Logout</button>
       </div>
       <div className="game-area">
-        <p>username: {usernameRef.current}</p>
-        <p>Your balance: {balanceRef.current}</p>
-        {/* Add your game UI components here */}
-        <div className="game-board">
-          <p>Game content goes here</p>
+          <p>{usernameRef.current}</p>
+          <div className="balance-container">
+            <img src={balanceIcon} alt="Balance Icon" width="30" height="30" />
+            <p>{balanceRef.current} USDT</p>
+          </div>
         </div>
-      </div>
       <BottomNavBar />
     </div>
   );
