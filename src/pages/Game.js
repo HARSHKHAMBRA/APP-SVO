@@ -55,6 +55,18 @@ const Game = () => {
     return <div>Loading...</div>;
   }
 
+  // Example games list
+  const games = [
+    { id: 1, name: 'Game 1' },
+    { id: 2, name: 'Game 2' },
+    { id: 3, name: 'Game 3' },
+    { id: 4, name: 'Game 4' },
+    { id: 5, name: 'Game 5' },
+    { id: 6, name: 'Game 6' },
+    { id: 7, name: 'Game 7' },
+    { id: 8, name: 'Game 8' },
+  ];
+
   return (
     <div className="game-container">
       <div className="header">
@@ -62,12 +74,32 @@ const Game = () => {
         <button onClick={handleLogout}>Logout</button>
       </div>
       <div className="game-area">
+        <div className="user-info">
           <p>{usernameRef.current}</p>
           <div className="balance-container">
             <img src={balanceIcon} alt="Balance Icon" width="30" height="30" />
             <p>{balanceRef.current} USDT</p>
           </div>
         </div>
+        <div className="game-list">
+          <div className="games-left">
+            {games.slice(0, 4).map(game => (
+              <div key={game.id} className="game-item">
+                <p>{game.name}</p>
+                {/* Add any other game info or UI components here */}
+              </div>
+            ))}
+          </div>
+          <div className="games-right">
+            {games.slice(4, 8).map(game => (
+              <div key={game.id} className="game-item">
+                <p>{game.name}</p>
+                {/* Add any other game info or UI components here */}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       <BottomNavBar />
     </div>
   );
