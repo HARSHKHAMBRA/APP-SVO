@@ -6,7 +6,8 @@ import BottomNavBar from '../BottomNavBar';
 const Game = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
-  const emailRef = useRef(null);
+  const usernameRef = useRef(null);
+  const balanceRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,7 +24,8 @@ const Game = () => {
           if (userResponse.ok) {
             const userData = await userResponse.json();
             setUser(userData);
-            emailRef.current = userData.email;
+            usernameRef.current = userData.username;
+            balanceRef.current = userData.balance;
           } else {
             const errorData = await userResponse.json();
             setError(errorData.error || 'Failed to fetch user details');
@@ -55,11 +57,12 @@ const Game = () => {
   return (
     <div className="game-container">
       <div className="header">
-        <h1>Welcome to the Game, {user.username}!</h1>
+        <h1>Welcome to the Game!</h1>
         <button onClick={handleLogout}>Logout</button>
       </div>
       <div className="game-area">
-        <p>Your email: {emailRef.current}</p>
+        <p>username: {usernameRef.current}</p>
+        <p>Your balance: {balanceRef.current}</p>
         {/* Add your game UI components here */}
         <div className="game-board">
           <p>Game content goes here</p>
