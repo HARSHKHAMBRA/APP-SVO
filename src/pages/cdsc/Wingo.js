@@ -4,24 +4,51 @@ import { useNavigate } from 'react-router-dom';
 const Wingo = () => {
   const [username, setUsername] = useState('');
   const [userBalance, setUserBalance] = useState(0);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch user data or use localStorage to get username and user balance
-    const storedUsername = localStorage.getItem('username');
-    const storedBalance = localStorage.getItem('userBalance');
+    const fetchUserData = async () => {
+      const token = localStorage.getItem('jwtToken');
+      if (token) {
+        try {
+          const userResponse = await fetch('/.netlify/functions/user-details', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
 
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
-    if (storedBalance) {
-      setUserBalance(parseFloat(storedBalance));
-    }
+          if (userResponse.ok) {
+            const userData = await userResponse.json();
+            setUsername(userData.username);
+            setUserBalance(userData.balance);
+          } else {
+            const errorData = await userResponse.json();
+            setError(errorData.error || 'Failed to fetch user details');
+          }
+        } catch (err) {
+          setError(err.message || 'Failed to fetch user data');
+        }
+      } else {
+        setError('No token found');
+      }
+    };
+
+    fetchUserData();
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('jwtToken');
+    navigate('/login');
+  };
 
   const handleBack = () => {
     navigate('/game'); // Navigate back to the game main page
   };
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="wingo-container">
@@ -32,6 +59,7 @@ const Wingo = () => {
         <p>This is Wingo content. Add your game description and UI elements.</p>
       </div>
       <button onClick={handleBack}>Back to Game</button>
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };

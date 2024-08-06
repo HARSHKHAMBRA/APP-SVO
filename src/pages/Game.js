@@ -68,13 +68,13 @@ const Game = () => {
   // Example games list with images and routes
   const games = [
     { id: 1, name: 'Game 1', image: game1Image, route: '/Wingo' },
-    { id: 2, name: 'Game 2', image: game2Image, route: '/cdsc87/game2' },
-    { id: 3, name: 'Game 3', image: game3Image, route: '/cdsc87/game3' },
-    { id: 4, name: 'Game 4', image: game4Image, route: '/cdsc87/game4' },
-    { id: 5, name: 'Game 5', image: game5Image, route: '/cdsc87/game5' },
-    { id: 6, name: 'Game 6', image: game6Image, route: '/cdsc87/game6' },
-    { id: 7, name: 'Game 7', image: game7Image, route: '/cdsc87/game7' },
-    { id: 8, name: 'Game 8', image: game8Image, route: '/cdsc87/game8' },
+    { id: 2, name: 'Game 2', image: game2Image, route: '/game2' },
+    { id: 3, name: 'Game 3', image: game3Image, route: '/game3' },
+    { id: 4, name: 'Game 4', image: game4Image, route: '/game4' },
+    { id: 5, name: 'Game 5', image: game5Image, route: '/game5' },
+    { id: 6, name: 'Game 6', image: game6Image, route: '/game6' },
+    { id: 7, name: 'Game 7', image: game7Image, route: '/game7' },
+    { id: 8, name: 'Game 8', image: game8Image, route: '/game8' },
   ];
 
   return (
